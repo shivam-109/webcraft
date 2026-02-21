@@ -5,7 +5,7 @@ function App() {
 
   return (
     <>
-      <h1 className="text-6xl text-blue-500">Tailwind Works</h1>
+      <h1 className="text-6xl text-blue-500">Cvam.fun</h1>
     </>
   );
 }
