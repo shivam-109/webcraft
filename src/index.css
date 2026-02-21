@@ -1,3 +1,310 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* ======================================================
+   RESET, BASE & PERFORMANCE
+====================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  will-change: transform, opacity;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #121212;
+  color: #f5f5f5;
+  font-family: "Segoe UI", Arial, sans-serif;
+  overflow-x: hidden;
+  transform: translateZ(0);
+}
+
+/* ======================================================
+   NAVBAR
+====================================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 40px;
+  background: rgba(18, 18, 18, 0.75);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.navbar a {
+  color: #ccc;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #8a5cff;
+}
+
+/* ======================================================
+   GLOBAL SECTIONS
+====================================================== */
+.section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 140px 20px;
+}
+
+.section-title {
+  font-size: 36px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.text-muted {
+  color: #aaa;
+  line-height: 1.7;
+}
+
+/* ======================================================
+   HERO
+====================================================== */
+.hero {
+  min-height: 100vh;
+  padding-top: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.hero h1 {
+  font-size: 64px;
+  font-weight: 700;
+}
+
+.hero p {
+  margin-top: 20px;
+  max-width: 650px;
+  color: #aaa;
+}
+
+/* ======================================================
+   BUTTONS
+====================================================== */
+.button {
+  margin-top: 40px;
+  padding: 14px 30px;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(120deg, #5f2cff, #00c6ff);
+  background-size: 200% 200%;
+  color: white;
+  font-weight: bold;
+  transition: all 0.4s ease;
+}
+
+.button:hover {
+  background-position: right center;
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
+
+/* ======================================================
+   CONTAINER (BENTO SECTIONS)
+====================================================== */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 140px 20px;
+}
+
+/* ======================================================
+   BENTO GRID SYSTEM (PROJECTS / SKILLS / EXPERIENCE)
+====================================================== */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 260px;
+  gap: 24px;
+}
+
+.bento-item {
+  position: relative;
+  padding: 32px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.08);
+  overflow: hidden;
+  transition: transform 0.4s ease;
+}
+
+.bento-item:hover {
+  transform: scale(1.04);
+}
+
+.bento-large {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* ======================================================
+   BENTO CONTENT TYPOGRAPHY
+====================================================== */
+.bento-item h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.bento-item h4 {
+  font-size: 14px;
+  margin-bottom: 12px;
+  color: #aaa;
+}
+
+.bento-item p {
+  font-size: 15px;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+/* ======================================================
+   RGB BORDER GLOW
+====================================================== */
+.bento-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--angle, 0deg),
+    #5f2cff,
+    #00c6ff,
+    #ff00cc,
+    #5f2cff
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ======================================================
+   FLOATING PARALLAX SHAPES
+====================================================== */
+.floating-shape {
+  position: absolute;
+  border-radius: 50%;
+  background: #8a5cff;
+  opacity: 0.12;
+  filter: blur(120px);
+  animation: float 10s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-40px); }
+}
+
+/* ======================================================
+   SCROLL REVEAL (CINEMATIC)
+====================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 1s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ======================================================
+   CUSTOM GLOW CURSOR
+====================================================== */
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(138,92,255,0.6), transparent 60%);
+  transform: translate(-50%, -50%);
+  mix-blend-mode: screen;
+  z-index: 9999;
+}
+
+/* ======================================================
+   MODAL (PROJECT DETAILS)
+====================================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal {
+  background: rgba(20,20,20,0.9);
+  border-radius: 22px;
+  padding: 40px;
+  max-width: 600px;
+  width: 90%;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* ======================================================
+   CONTACT
+====================================================== */
+.contact {
+  text-align: center;
+}
+
+.contact p {
+  margin-top: 12px;
+}
+
+/* ======================================================
+   RESPONSIVE
+====================================================== */
+@media (max-width: 1000px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero h1 {
+    font-size: 46px;
+  }
+}
+
+@media (max-width: 600px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section,
+  .container {
+    padding: 100px 16px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+}
