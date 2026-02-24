@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import HeroSection from "./sections/HeroSection";
@@ -6,45 +7,33 @@ import AboutSection from "./sections/AboutSection";
 import SkillsSection from "./sections/SkillsSection";
 import ExperienceSection from "./sections/ExperienceSection";
 import ProjectsSection from "./sections/ProjectsSection";
-import ContactSection from "./sections/ContactSection";
+import Footer from "./components/Footer";
+
+// Project detail pages
+import MedicoGraph from "./pages/MedicoGraph";
+import Eventify from "./pages/Eventify";
 
 export default function App() {
 
   /* =========================
-     GLOWING CURSOR
-  ========================= */
-  useEffect(() => {
-    const cursor = document.querySelector(".cursor");
-
-    const moveCursor = (e) => {
-      if (!cursor) return;
-      cursor.style.left = `${e.clientX}px`;
-      cursor.style.top = `${e.clientY}px`;
-    };
-
-    window.addEventListener("mousemove", moveCursor);
-    return () => window.removeEventListener("mousemove", moveCursor);
-  }, []);
-
-  /* =========================
-     PARALLAX DEPTH SCROLL
+     PARALLAX SCROLL
   ========================= */
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
 
       document.querySelectorAll(".parallax").forEach((el) => {
-        const speed = parseFloat(el.getAttribute("data-speed")) || 0;
+        const speed = Number(el.dataset.speed) || 0;
         el.style.transform = `translateY(${scrollY * speed}px)`;
       });
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   /* =========================
-     CINEMATIC SCROLL REVEAL
+     SCROLL REVEAL
   ========================= */
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -52,6 +41,7 @@ export default function App() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("active");
+            observer.unobserve(entry.target); // reveal once
           }
         });
       },
@@ -66,18 +56,29 @@ export default function App() {
   }, []);
 
   return (
-    <>
-      {/* Custom Cursor */}
-      <div className="cursor"></div>
-
-      {/* Layout */}
+    <BrowserRouter>
       <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <SkillsSection />
-      <ExperienceSection />
-      <ProjectsSection />
-      <ContactSection />
-    </>
+
+      <Routes>
+        {/* ================= HOME PAGE ================= */}
+        <Route
+          path="/"
+          element={
+            <>
+              <HeroSection />
+              <AboutSection />
+              <SkillsSection />
+              <ExperienceSection />
+              <ProjectsSection />
+              <Footer />
+            </>
+          }
+        />
+
+        {/* ================= PROJECT PAGES ================= */}
+        <Route path="/projects/medico-graph" element={<MedicoGraph />} />
+        <Route path="/projects/eventify" element={<Eventify />} />
+      </Routes>
+    </BrowserRouter>
   );
 }

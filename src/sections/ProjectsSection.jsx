@@ -1,51 +1,48 @@
-import { useState } from "react";
+
+import { useNavigate } from "react-router-dom";
 
 export default function ProjectsSection() {
-  const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
-    <section className="container reveal" id="projects">
-      <h2 className="section-title">Selected Work</h2>
+    <section className="section projects-section reveal" id="projects">
+      <h2 className="section-title">Selected Works</h2>
 
       <div className="bento-grid">
+
+        {/* ================= MEDICO GRAPH ================= */}
         <div
-          className="bento-item bento-large"
-          onClick={() => setOpen(true)}
+          className="bento-item "
+          onClick={() => navigate("/projects/medico-graph")}
         >
-          <h3>ScaleLab</h3>
-          <p>Interactive probability engine with cinematic UI.</p>
-        </div>
-
-        <div className="bento-item">
           <h3>Medico Graph</h3>
-          <p>Healthcare data visualization platform.</p>
+          <p>
+            Microservices-based medical record management system designed
+            for scalability, security, and enterprise-grade backend architecture.
+          </p>
+
+          <span className="project-link">
+            View full case study →
+          </span>
         </div>
 
-        <div className="bento-item">
+        {/* ================= EVENTIFY ================= */}
+        <div
+          className="bento-item"
+          onClick={() => navigate("/projects/eventify")}
+        >
           <h3>Eventify</h3>
-          <p>Event management system with real-time updates.</p>
+          <p>
+            Cloud-native, serverless event management platform built on AWS
+            using Lambda, API Gateway, and DynamoDB.
+          </p>
+
+          <span className="project-link">
+            View full case study →
+          </span>
         </div>
 
-        <div className="bento-item">
-          <h3>Creative Dashboard</h3>
-          <p>Analytics dashboard with custom UI components.</p>
-        </div>
       </div>
-
-      {open && (
-        <div className="modal-overlay" onClick={() => setOpen(false)}>
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <h3>ScaleLab</h3>
-            <p>
-              A high-fidelity interactive simulation platform exploring
-              probability, scale, and human decision systems.
-            </p>
-            <button className="button" onClick={() => setOpen(false)}>
-              Close
-            </button>
-          </div>
-        </div>
-      )}
     </section>
   );
 }

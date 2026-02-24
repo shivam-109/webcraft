@@ -1,11 +1,10 @@
 /* ======================================================
-   RESET, BASE & PERFORMANCE
+   RESET & BASE
 ====================================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  will-change: transform, opacity;
 }
 
 html {
@@ -17,7 +16,12 @@ body {
   color: #f5f5f5;
   font-family: "Segoe UI", Arial, sans-serif;
   overflow-x: hidden;
-  transform: translateZ(0);
+}
+
+/* Prevent horizontal scrolling everywhere */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* ======================================================
@@ -27,8 +31,8 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 20px 40px;
-  background: rgba(18, 18, 18, 0.75);
+  padding: 18px clamp(16px, 4vw, 40px);
+  background: rgba(18, 18, 18, 0.85);
   backdrop-filter: blur(12px);
   display: flex;
   justify-content: space-between;
@@ -40,7 +44,7 @@ body {
 .navbar a {
   color: #ccc;
   text-decoration: none;
-  margin-left: 20px;
+  margin-left: 18px;
   font-size: 14px;
   transition: color 0.3s ease;
 }
@@ -49,24 +53,21 @@ body {
   color: #8a5cff;
 }
 
+
+
 /* ======================================================
    GLOBAL SECTIONS
 ====================================================== */
 .section {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 140px 20px;
+  padding: clamp(90px, 12vw, 140px) 20px;
 }
 
 .section-title {
-  font-size: 36px;
-  margin-bottom: 50px;
+  font-size: clamp(28px, 4vw, 36px);
+  margin-bottom: clamp(30px, 5vw, 50px);
   text-align: center;
-}
-
-.text-muted {
-  color: #aaa;
-  line-height: 1.7;
 }
 
 /* ======================================================
@@ -74,99 +75,171 @@ body {
 ====================================================== */
 .hero {
   min-height: 100vh;
-  padding-top: 140px;
+  padding-top: 120px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  flex-direction: column;
   position: relative;
 }
 
 .hero h1 {
-  font-size: 64px;
+  font-size: clamp(36px, 6vw, 64px);
   font-weight: 700;
 }
 
 .hero p {
   margin-top: 20px;
-  max-width: 650px;
+  max-width: 750px;
+  font-size: clamp(15px, 2vw, 18px);
   color: #aaa;
+  line-height: 1.7;
 }
 
 /* ======================================================
-   BUTTONS
+   BUTTON
 ====================================================== */
 .button {
   margin-top: 40px;
   padding: 14px 30px;
   border-radius: 40px;
-  border: none;
-  cursor: pointer;
   background: linear-gradient(120deg, #5f2cff, #00c6ff);
   background-size: 200% 200%;
-  color: white;
-  font-weight: bold;
-  transition: all 0.4s ease;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.4s ease;
 }
 
 .button:hover {
   background-position: right center;
   transform: scale(1.05);
-  filter: brightness(1.2);
 }
 
 /* ======================================================
-   CONTAINER (BENTO SECTIONS)
+   ABOUT
 ====================================================== */
-.container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 140px 20px;
+.about-card {
+  margin-top: 30px;
+  padding-left: 20px;
+  border-left: 2px solid rgba(138, 92, 255, 0.3);
+}
+
+.about-paragraph {
+  font-size: clamp(15px, 2vw, 18px);
+  line-height: 1.8;
+  color: #ccc;
+  margin-bottom: 22px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.25s; }
+.delay-3 { animation-delay: 0.4s; }
+.delay-4 { animation-delay: 0.55s; }
+.delay-5 { animation-delay: 0.7s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ======================================================
-   BENTO GRID SYSTEM (PROJECTS / SKILLS / EXPERIENCE)
+   SKILLS (2x2 GRID)
+====================================================== */
+.skills-grid-advanced {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  margin-left: 17px;
+}
+
+
+/* .skills-block {
+  padding-left: 40px;
+  border-left: 2px solid rgba(138, 92, 255, 0.3);
+} */
+
+.skills-block h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: #8a5cff;
+  margin-top: 40px;
+}
+
+.skills-block li {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .skills-grid-advanced {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ======================================================
+   EXPERIENCE
+====================================================== */
+.experience-timeline {
+  margin-top: 40px;
+  border-left: 2px solid rgba(138, 92, 255, 0.3);
+  padding-left: 40px;
+}
+
+.experience-item {
+  margin-bottom: 60px;
+}
+
+.experience-header h3 {
+  font-size: 20px;
+  color: #8a5cff;
+}
+
+.experience-header span {
+  font-size: 14px;
+  color: #aaa;
+}
+
+.experience-points li {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #ccc;
+}
+
+/* ======================================================
+   PROJECTS – BENTO GRID
 ====================================================== */
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 260px;
   gap: 24px;
 }
 
 .bento-item {
-  position: relative;
-  padding: 32px;
-  border-radius: 22px;
+  padding: 28px;
+  border-radius: 20px;
   background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(14px);
   border: 1px solid rgba(255,255,255,0.08);
-  overflow: hidden;
-  transition: transform 0.4s ease;
+  cursor: pointer;
+  transition: transform 0.4s ease, background 0.4s ease;
 }
 
 .bento-item:hover {
-  transform: scale(1.04);
+  transform: translateY(-8px);
+  background: rgba(255,255,255,0.08);
 }
 
-.bento-large {
-  grid-column: span 2;
-  grid-row: span 2;
-}
-
-/* ======================================================
-   BENTO CONTENT TYPOGRAPHY
-====================================================== */
 .bento-item h3 {
-  font-size: 22px;
+  font-size: clamp(18px, 2vw, 22px);
   margin-bottom: 10px;
-}
-
-.bento-item h4 {
-  font-size: 14px;
-  margin-bottom: 12px;
-  color: #aaa;
 }
 
 .bento-item p {
@@ -175,54 +248,176 @@ body {
   line-height: 1.6;
 }
 
-/* ======================================================
-   RGB BORDER GLOW
-====================================================== */
-.bento-item::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 22px;
-  padding: 1px;
-  background: conic-gradient(
-    from var(--angle, 0deg),
-    #5f2cff,
-    #00c6ff,
-    #ff00cc,
-    #5f2cff
-  );
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
+.bento-large {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* Project link */
+.project-link {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 14px;
+  color: #8a5cff;
+  transition: transform 0.3s ease;
+}
+
+.bento-item:hover .project-link {
+  transform: translateX(6px);
 }
 
 /* ======================================================
-   FLOATING PARALLAX SHAPES
+   PROJECT DETAIL PAGES
+====================================================== */
+
+.project-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: clamp(100px, 12vw, 160px) 20px;
+}
+
+.project-page h2 {
+  font-size: clamp(30px, 4vw, 40px);
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.project-intro {
+  font-size: clamp(16px, 2vw, 18px);
+  color: #aaa;
+  line-height: 1.8;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+/* Section blocks */
+.project-section {
+  margin-bottom: 50px;
+}
+
+.project-section h3 {
+  font-size: clamp(18px, 2.5vw, 22px);
+  color: #8a5cff;
+  margin-bottom: 14px;
+}
+
+/* Paragraphs */
+.project-section p {
+  font-size: clamp(15px, 2vw, 17px);
+  line-height: 1.7;
+  color: #ccc;
+  margin-bottom: 14px;
+}
+
+/* Bullet lists */
+.project-section ul {
+  padding-left: 18px;
+  margin-top: 10px;
+}
+
+.project-section li {
+  font-size: clamp(14px, 1.9vw, 16px);
+  color: #ccc;
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+/* Highlight metrics */
+.project-metric {
+  margin-top: 20px;
+  padding-left: 18px;
+  border-left: 3px solid rgba(138, 92, 255, 0.4);
+  color: #ddd;
+  font-size: 16px;
+}
+
+/* Tech stack grid */
+.project-tech {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.project-tech div {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.project-tech h4 {
+  font-size: 14px;
+  color: #8a5cff;
+  margin-bottom: 8px;
+}
+
+.project-tech p {
+  font-size: 14px;
+  color: #ccc;
+}
+
+/* Back button */
+.project-back {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+/* ======================================================
+   MOBILE REFINEMENTS
+====================================================== */
+@media (max-width: 600px) {
+  .project-page {
+    padding: 100px 16px;
+  }
+
+  .project-intro {
+    text-align: left;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bento-large {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bento-large {
+    grid-column: span 1;
+  }
+}
+
+/* ======================================================
+   FLOATING SHAPES
 ====================================================== */
 .floating-shape {
   position: absolute;
   border-radius: 50%;
   background: #8a5cff;
-  opacity: 0.12;
+  opacity: 0.15;
   filter: blur(120px);
-  animation: float 10s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-40px); }
 }
 
 /* ======================================================
-   SCROLL REVEAL (CINEMATIC)
+   REVEAL ANIMATION
 ====================================================== */
 .reveal {
   opacity: 0;
-  transform: translateY(60px);
-  transition: all 1s cubic-bezier(0.2, 1, 0.3, 1);
+  transform: translateY(50px);
+  transition: 0.8s ease;
 }
 
 .reveal.active {
@@ -231,80 +426,222 @@ body {
 }
 
 /* ======================================================
-   CUSTOM GLOW CURSOR
+   FOOTER
 ====================================================== */
-.cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  pointer-events: none;
-  background: radial-gradient(circle, rgba(138,92,255,0.6), transparent 60%);
-  transform: translate(-50%, -50%);
-  mix-blend-mode: screen;
-  z-index: 9999;
+.footer {
+  padding: clamp(50px, 8vw, 80px) 20px;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.05);
 }
 
-/* ======================================================
-   MODAL (PROJECT DETAILS)
-====================================================== */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.65);
-  backdrop-filter: blur(12px);
+.footer-links {
   display: flex;
   justify-content: center;
-  align-items: center;
-  z-index: 2000;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
-.modal {
-  background: rgba(20,20,20,0.9);
-  border-radius: 22px;
-  padding: 40px;
-  max-width: 600px;
-  width: 90%;
-  border: 1px solid rgba(255,255,255,0.1);
+.footer-links a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  color: #8a5cff;
+}
+
+.footer-credit {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #666;
+}
+/* ======================================================
+   GLOBAL TYPOGRAPHY IMPROVEMENT
+   (Keeps your design, improves scaling)
+====================================================== */
+
+body {
+  font-size: clamp(14px, 1vw, 16px);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  line-height: 1.25;
+}
+
+/* Improve paragraph readability */
+p {
+  font-size: clamp(14px, 1.2vw, 17px);
 }
 
 /* ======================================================
-   CONTACT
+   HERO REFINEMENT
 ====================================================== */
-.contact {
-  text-align: center;
-}
 
-.contact p {
-  margin-top: 12px;
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 140px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .hero p {
+    max-width: 100%;
+  }
 }
 
 /* ======================================================
-   RESPONSIVE
+   SECTION SPACING REFINEMENT
 ====================================================== */
-@media (max-width: 1000px) {
+
+@media (max-width: 768px) {
+  .section {
+    padding: 90px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 70px 14px;
+  }
+}
+
+/* ======================================================
+   BENTO GRID FULL RESPONSIVE CONTROL
+====================================================== */
+
+/* Large screens */
+@media (min-width: 1400px) {
+  .bento-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Laptops */
+@media (max-width: 1200px) {
+  .bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Tablets */
+@media (max-width: 992px) {
   .bento-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .hero h1 {
-    font-size: 46px;
+  .bento-large {
+    grid-column: span 2;
+    grid-row: span 1;
   }
 }
 
-@media (max-width: 600px) {
+/* Mobile */
+@media (max-width: 768px) {
   .bento-grid {
     grid-template-columns: 1fr;
   }
 
-  .section,
-  .container {
-    padding: 100px 16px;
+  .bento-item {
+    padding: 22px;
   }
 
-  .hero h1 {
-    font-size: 36px;
+  .bento-large {
+    grid-column: span 1;
+  }
+}
+
+/* ======================================================
+   PROJECT PAGE RESPONSIVENESS
+====================================================== */
+
+@media (max-width: 768px) {
+  .project-page {
+    padding: 120px 18px;
+  }
+
+  .project-section {
+    margin-bottom: 35px;
+  }
+
+  .project-section h3 {
+    font-size: clamp(18px, 3vw, 22px);
+  }
+
+  .project-section li {
+    font-size: clamp(14px, 2.5vw, 16px);
+  }
+}
+
+/* ======================================================
+   SKILLS SECTION FONT BALANCE
+====================================================== */
+
+@media (max-width: 768px) {
+  .skills-block h3 {
+    font-size: 18px;
+  }
+
+  .skills-block li {
+    font-size: 15px;
+  }
+}
+
+/* ======================================================
+   EXPERIENCE SECTION FIX
+====================================================== */
+
+@media (max-width: 768px) {
+  .experience-timeline {
+    padding-left: 20px;
+  }
+
+  .experience-header h3 {
+    font-size: 18px;
+  }
+
+  .experience-points li {
+    font-size: 15px;
+  }
+}
+
+/* ======================================================
+   BUTTON RESPONSIVE REFINEMENT
+====================================================== */
+
+@media (max-width: 480px) {
+  .button {
+    padding: 12px 22px;
+    font-size: 14px;
+  }
+}
+
+/* ======================================================
+   NAVBAR MOBILE IMPROVEMENT
+====================================================== */
+
+@media (max-width: 600px) {
+  .navbar {
+    padding: 16px 20px;
+  }
+
+  .navbar a {
+    margin-left: 12px;
+    font-size: 13px;
+  }
+}
+
+/* ======================================================
+   ULTRA LARGE SCREEN REFINEMENT (4K)
+====================================================== */
+
+@media (min-width: 1600px) {
+  .section {
+    max-width: 1400px;
+  }
+
+  .project-page {
+    max-width: 1100px;
   }
 }
