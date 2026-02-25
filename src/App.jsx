@@ -7,7 +7,7 @@ import AboutSection from "./sections/AboutSection";
 import SkillsSection from "./sections/SkillsSection";
 import ExperienceSection from "./sections/ExperienceSection";
 import ProjectsSection from "./sections/ProjectsSection";
-import Footer from "./components/Footer";
+import Footer from "./components/footer";
 
 // Project detail pages
 import MedicoGraph from "./pages/MedicoGraph";
