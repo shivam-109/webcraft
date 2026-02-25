@@ -153,7 +153,7 @@ export default function Eventify() {
 
       {/* ================= IMPACT ================= */}
       <div className="project-section project-metric">
-        🚀 Eventify demonstrates strong expertise in serverless architecture,
+        Eventify demonstrates strong expertise in serverless architecture,
         cloud automation, Infrastructure as Code, and production-ready AWS
         deployment strategies.
       </div>

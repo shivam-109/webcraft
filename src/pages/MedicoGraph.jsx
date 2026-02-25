@@ -103,7 +103,7 @@ export default function MedicoGraph() {
         </ul>
 
         <div className="project-metric">
-          📈 Reduced data retrieval time by <strong>15%</strong>
+          Reduced data retrieval time by <strong>15%</strong>
         </div>
       </div>
 
