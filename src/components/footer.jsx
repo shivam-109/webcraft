@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-links">
         <a href="mailto:shivam.connect30@gmail.com">
-          shivam.connect30@gmail.com
+          Email
         </a>
 
         <span className="footer-separator">•</span>
@@ -14,6 +14,15 @@ export default function Footer() {
           rel="noopener noreferrer"
         >
           LinkedIn
+        </a>
+         <span className="footer-separator">•</span>
+
+         <a
+          href="https://github.com/shivam-109"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Github
         </a>
       </div>
 

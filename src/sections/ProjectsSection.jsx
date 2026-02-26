@@ -6,7 +6,7 @@ export default function ProjectsSection() {
 
   return (
     <section className="section projects-section reveal" id="projects">
-      <h2 className="section-title">Selected Works</h2>
+      <h2 className="section-title">Projects</h2>
 
       <div className="bento-grid">
 
