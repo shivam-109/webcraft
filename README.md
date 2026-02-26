@@ -1,20 +1,37 @@
-<<<<<<< HEAD
-# React + Vite
+Shivam Patel — Software Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, production-ready **React Single Page Application (SPA)** showcasing my experience in **full-stack development, cloud architecture, and scalable system design**.
 
-Currently, two official plugins are available:
+This portfolio is not just a UI showcase — it demonstrates **real engineering decisions**, **clean architecture**, and **case-study level project documentation**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+This application includes:
+- A dynamic **Home page** with smooth section navigation
+- **Detailed project case studies** with dedicated routes
+- Responsive design optimized for **desktop, tablet, and mobile**
+- Clean animations and scroll-based interactions
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# webcraft
->>>>>>> a8406239059c826c2661ef79ae4e1ee74e11f3e2
+## Tech Stack
+
+### Frontend
+- **React.js**
+- **React Router DOM**
+- Modern JavaScript (ES6+)
+- CSS Grid & Flexbox
+- Responsive design using `clamp()` and media queries
+
+### Architecture & UX
+- Component-based design
+- Scroll-aware routing
+- Intersection Observer API for animations
+- Modular file structure
+
+### Tooling
+- Vite
+- Git & GitHub
+- ESLint
+
